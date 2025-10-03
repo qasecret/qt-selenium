@@ -60,20 +60,6 @@ public class Example {
 }
 ```
 
-Using multiple Selenium versions
-
-You can keep the relocated Selenium (this library) and a standard Selenium dependency together. Use the relocated package when you want the repackaged version, and the org.openqa.selenium package for the other version.
-
-Building from source
-
-1. Clone the repo.
-2. Build the relocated jar:
-
-```bash
-./gradlew clean shadowJar
-```
-
-The shaded jar will be produced in `build/libs/` as `selenium-qt-1.0.0.jar`.
 
 Notes
 
