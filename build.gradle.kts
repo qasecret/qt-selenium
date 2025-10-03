@@ -7,7 +7,9 @@ plugins {
 }
 
 group = "io.github.qasecret"
-version = "1.0.0" // Our library version (based on Selenium 3.141.0)
+version = "1.0.0"
+
+val seleniumVersion = "3.141.0"
 
 repositories {
     mavenCentral()
@@ -16,7 +18,7 @@ repositories {
 }
 
 dependencies {
-    implementation("org.seleniumhq.selenium:selenium-java:3.141.0")
+    implementation("org.seleniumhq.selenium:selenium-java:$seleniumVersion")
 }
 
 
@@ -27,7 +29,8 @@ mavenPublishing {
 
     pom {
         name = "Selenium-QT"
-        description = "A repackaged version of Selenium WebDriver 3.141.0 with relocated packages to avoid version conflicts"
+        description =
+            "A repackaged version of Selenium WebDriver 3.141.0 with relocated packages to avoid version conflicts"
         inceptionYear = "2025"
         url = "https://github.com/qasecret/selenium-qt"
         licenses {

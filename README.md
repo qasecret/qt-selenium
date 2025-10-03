@@ -1,130 +1,90 @@
-# Selenium-QT (Selenium Relocation Library)
+# Selenium‑QT
 
-A specialized library that provides a relocated version of Selenium WebDriver (version 3.141.0) to avoid version conflicts in your test automation projects. All Selenium packages are relocated to `io.github.qasecret.selenium-qt` namespace.
+A small, repackaged Selenium WebDriver library that relocates Selenium 3.141.0 classes so you can use multiple Selenium versions side-by-side.
 
-## Purpose
+Key points
+- Relocated packages: org.openqa.selenium → io.github.qasecret.selenium-qt
+- Library coordinates: io.github.qasecret:selenium-qt:1.0.0
+- Purpose: avoid classpath/package conflicts between different Selenium versions
 
-This library solves the common problem of using multiple Selenium versions in a single project by relocating all Selenium 3.141.0 classes to a different package namespace. This allows you to:
+Quick start
 
-- Use multiple Selenium versions in the same project without conflicts
-- Maintain legacy tests with older Selenium versions while writing new tests with newer versions
-- Avoid dependency hell with Selenium-dependent libraries
-
-## Features
-
-- Complete relocation of Selenium 3.141.0 packages to `io.github.qasecret.selenium-qt`
-- Maintains all original Selenium functionality
-- Compatible with both Java and Kotlin projects
-- Zero conflict guarantee with other Selenium versions
-
-## Installation
-
-### Gradle
+Gradle (recommended)
 
 ```groovy
 repositories {
-    mavenCentral()
-    // Add your repository where the relocated jar is hosted
+  mavenCentral()
 }
 
 dependencies {
-    implementation 'io.github.qasecret:selenium-qt:1.0.0'  // Based on Selenium 3.141.0
+  implementation 'io.github.qasecret:selenium-qt:1.0.0'
 }
 ```
 
-### Maven
+Maven
 
 ```xml
 <dependency>
-    <groupId>io.github.qasecret</groupId>
-    <artifactId>selenium-qt</artifactId>
-    <version>1.0.0</version>  <!-- Based on Selenium 3.141.0 -->
+  <groupId>io.github.qasecret</groupId>
+  <artifactId>selenium-qt</artifactId>
+  <version>1.0.0</version>
 </dependency>
 ```
 
-## Usage
+How to import the relocated classes
 
-### Basic Example
+- Original Selenium: org.openqa.selenium.*
+- Relocated Selenium: io.github.qasecret.selenium_qt.*
 
-Instead of using the original Selenium packages, use the relocated ones:
+Kotlin example (no imports shown)
 
 ```kotlin
-import io.github.qasecret.selenium_qt.WebDriver
-import io.github.qasecret.selenium_qt.chrome.ChromeDriver
-import io.github.qasecret.selenium_qt.support.ui.WebDriverWait
-
 fun main() {
-    val driver: WebDriver = ChromeDriver()
-    driver.get("https://www.example.com")
-    
-    // Use other Selenium features as normal, but with the relocated package
-    val wait = WebDriverWait(driver, 10)
-    // ... rest of your code
+  val driver = io.github.qasecret.selenium_qt.chrome.ChromeDriver()
+  driver.get("https://example.com")
+  println(driver.title)
+  driver.quit()
 }
 ```
 
-### Using Multiple Selenium Versions
+Java example (no imports shown)
 
-You can now use both the relocated and standard Selenium versions in the same project:
-
-```kotlin
-// Using relocated Selenium 3.141.0
-import io.github.qasecret.selenium_qt.WebDriver as RelocatedWebDriver
-import io.github.qasecret.selenium_qt.chrome.ChromeDriver as RelocatedChromeDriver
-
-// Using standard Selenium (different version)
-import org.openqa.selenium.WebDriver
-import org.openqa.selenium.chrome.ChromeDriver
-
-fun main() {
-    // Using relocated version
-    val driver1: RelocatedWebDriver = RelocatedChromeDriver()
-    
-    // Using standard version
-    val driver2: WebDriver = ChromeDriver()
+```java
+public class Example {
+  public static void main(String[] args) {
+    io.github.qasecret.selenium_qt.chrome.ChromeDriver driver = new io.github.qasecret.selenium_qt.chrome.ChromeDriver();
+    driver.get("https://example.com");
+    System.out.println(driver.getTitle());
+    driver.quit();
+  }
 }
 ```
 
-## Building from Source
+Using multiple Selenium versions
 
-1. Clone the repository:
+You can keep the relocated Selenium (this library) and a standard Selenium dependency together. Use the relocated package when you want the repackaged version, and the org.openqa.selenium package for the other version.
+
+Building from source
+
+1. Clone the repo.
+2. Build the relocated jar:
+
 ```bash
-git clone https://github.com/your-username/selenium-qt.git
+./gradlew clean shadowJar
 ```
 
-2. Build using Gradle:
-```bash
-./gradlew shadowJar
-```
+The shaded jar will be produced in `build/libs/` as `selenium-qt-1.0.0.jar`.
 
-The relocated jar will be available in `build/libs/`.
+Notes
 
-## Technical Details
+- This library is based on Selenium 3.141.0. We maintain our own library version (1.0.0) so we can change packaging without pretending it's an upstream Selenium release.
+- Packages are relocated to `io.github.qasecret.selenium_qt` (underscores are used to keep valid Java package names).
+- The Shadow plugin performs relocation; check `build.gradle.kts` for the exact relocation mapping.
 
-### Relocated Packages
+License
 
-All packages under `org.openqa.selenium` are relocated to `io.github.qasecret.selenium-qt`, including:
-- Core Selenium packages
-- WebDriver implementations (Chrome, Firefox, etc.)
-- Support packages
-- Grid components
+This project includes Selenium (Apache License 2.0). See the `LICENSE` file for details.
 
-### Implementation
+Need help?
 
-The relocation is implemented using the Gradle Shadow plugin, which handles the complete package renaming while maintaining all functionality.
-
-## License
-
-This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## Support
-
-For issues and questions, please create an issue in the GitHub repository.
-
----
-
-**Note:** This is a specialized tool for handling Selenium version conflicts. Make sure you understand the implications of using relocated packages in your project before implementing.
+Open an issue in the repository or ask here with an example of how you're trying to use the library and what conflicts you're seeing.
