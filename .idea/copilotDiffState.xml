@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CopilotDiffPersistence">
+    <option name="pendingDiffs">
+      <map>
+        <entry key="$PROJECT_DIR$/README.md">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/README.md" />
+              <option name="updatedContent" value="# Selenium QT&#10;&#10;A repackaged version of Selenium WebDriver that allows you to use multiple Selenium versions in the same project without conflicts.&#10;&#10;## Features&#10;&#10;- Relocates all Selenium packages to `io.github.qasecret.selenium_qt`&#10;- Includes all Selenium dependencies (relocated to avoid conflicts)&#10;- Compatible with Selenium 3.141.0&#10;- Can be used alongside other Selenium versions in the same project&#10;&#10;## Usage&#10;&#10;### Gradle&#10;&#10;Add the following to your `build.gradle` or `build.gradle.kts`:&#10;&#10;```kotlin&#10;repositories {&#10;    mavenCentral()&#10;    // Add your repository where this jar is hosted&#10;}&#10;&#10;dependencies {&#10;    implementation(&quot;io.github.qasecret:selenium-qt:1.0.0&quot;)&#10;}&#10;```&#10;&#10;### Example Code&#10;&#10;```kotlin&#10;import io.github.qasecret.selenium_qt.chrome.ChromeDriver&#10;import io.github.qasecret.selenium_qt.chrome.ChromeOptions&#10;&#10;fun main() {&#10;    val options = ChromeOptions()&#10;    val driver = ChromeDriver(options)&#10;    &#10;    try {&#10;        driver.get(&quot;https://www.google.com&quot;)&#10;        println(&quot;Page title: ${driver.title}&quot;)&#10;    } finally {&#10;        driver.quit()&#10;    }&#10;}&#10;```&#10;&#10;### Important Notes&#10;&#10;1. All Selenium classes are relocated under `io.github.qasecret.selenium_qt` package&#10;2. Common dependencies are relocated to avoid conflicts:&#10;   - Guava → `io.github.qasecret.selenium_qt.libs.guava`&#10;   - Apache Commons → `io.github.qasecret.selenium_qt.libs.commons`&#10;   - ByteBuddy → `io.github.qasecret.selenium_qt.libs.bytebuddy`&#10;   - Gson → `io.github.qasecret.selenium_qt.libs.gson`&#10;   - OkHttp3 → `io.github.qasecret.selenium_qt.libs.okhttp3`&#10;   - Okio → `io.github.qasecret.selenium_qt.libs.okio`&#10;&#10;3. You can use this library alongside other versions of Selenium in your project without package conflicts&#10;&#10;## Using Multiple Selenium Versions&#10;&#10;Example of using both versions in the same project:&#10;&#10;```kotlin&#10;// Using Selenium QT (relocated version)&#10;import io.github.qasecret.selenium_qt.chrome.ChromeDriver as RelocatedChromeDriver&#10;&#10;// Using regular Selenium&#10;import org.openqa.selenium.chrome.ChromeDriver as StandardChromeDriver&#10;&#10;fun example() {&#10;    // Using relocated version&#10;    val qt = RelocatedChromeDriver()&#10;    &#10;    // Using standard version&#10;    val standard = StandardChromeDriver()&#10;    &#10;    // Both can be used simultaneously&#10;    qt.quit()&#10;    standard.quit()&#10;}&#10;```&#10;&#10;## License&#10;&#10;This project is licensed under the same terms as Selenium WebDriver." />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

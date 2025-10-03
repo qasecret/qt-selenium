@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "io.github.qasecret"
-version = "1.0.0"
+version = "1.0.1"
 
 val seleniumVersion = "3.141.0"
 
@@ -84,6 +84,8 @@ tasks {
         archiveBaseName.set("selenium-qt")
         archiveClassifier.set("")
         mergeServiceFiles()
+        relocate("com.thoughtworks.selenium","io.github.qasecret.selenium")
+        relocate("org.seleniumhq.selenium","io.github.qasecret.selenium")
         relocate("org.openqa.selenium", "io.github.qasecret.selenium_qt")
         relocate("com.google.common", "io.github.qasecret.selenium_qt.libs.guava")
         relocate("org.apache.commons", "io.github.qasecret.selenium_qt.libs.commons")
