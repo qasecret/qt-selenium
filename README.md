@@ -11,6 +11,10 @@ A repackaged Selenium 3.141.0 library that allows using multiple Selenium versio
 implementation 'io.github.qasecret:qt-selenium:1.0.3'
 ```
 
+```kotlin
+implementation ("io.github.qasecret:qt-selenium:1.0.3")
+```
+
 #### Maven
 ```xml
 <dependency>
@@ -26,5 +30,4 @@ implementation 'io.github.qasecret:qt-selenium:1.0.3'
 ```
 
 ## License
-
-[Include license information here]
+This project is licensed under the Apache License - see the [LICENSE](LICENSE) file for details.
